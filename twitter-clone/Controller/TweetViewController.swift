@@ -13,7 +13,7 @@ class TweetViewController: UIViewController {
     
     enum Action {
         case add
-        case edit(tweet: TweetModel)
+        case edit(tweet: Tweet)
     }
 
     @IBOutlet weak var textView: UITextView!
@@ -66,14 +66,14 @@ class TweetViewController: UIViewController {
             return
         }
         do {
-            let _ = try db.collection("tweets").addDocument(from: TweetModel(text: text))
+            let _ = try db.collection("tweets").addDocument(from: Tweet(text: text))
             dismiss(animated: true, completion: nil)
         } catch {
             showError(with: error.localizedDescription)
         }
     }
     
-    func performEditAction(tweet: TweetModel) {
+    func performEditAction(tweet: Tweet) {
         guard let tweetId = tweet.id else {
             showError(with: "Corrupted data: tweet needs to have and id!")
             dismiss(animated: true, completion: nil)

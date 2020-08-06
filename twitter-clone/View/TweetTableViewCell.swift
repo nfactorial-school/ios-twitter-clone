@@ -14,9 +14,9 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
-    private var model: TweetModel?
+    private var model: Tweet?
     
-    func configure(with model: TweetModel) {
+    func configure(with model: Tweet) {
         self.model = model
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full

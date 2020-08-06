@@ -1,5 +1,5 @@
 //
-//  TweetModel.swift
+//  Tweet.swift
 //  twitter-clone
 //
 //  Created by Aidar Nugmanoff on 8/7/20.
@@ -9,7 +9,7 @@
 import Firebase
 import Foundation
 
-struct TweetModel: Codable {
+struct Tweet: Codable {
     var id: String?
     let authorUsername: String
     let authorId: String

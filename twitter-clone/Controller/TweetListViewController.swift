@@ -13,7 +13,7 @@ import UIKit
 class TweetListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
-    private var tweets: [TweetModel] = [] {
+    private var tweets: [Tweet] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -22,17 +22,7 @@ class TweetListViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        db.collection("tweets").addSnapshotListener { (snapshot, error) in
-            if let error = error {
-                self.showError(with: error.localizedDescription)
-            } else if let documents = snapshot?.documents {
-                self.tweets = documents.compactMap { (document) -> TweetModel? in
-                    var tweet = try? document.data(as: TweetModel.self)
-                    tweet?.id = document.documentID
-                    return tweet
-                }
-            }
-        }
+        setupDatabaseListener()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,6 +39,20 @@ class TweetListViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+    }
+    
+    func setupDatabaseListener() {
+        db.collection("tweets").addSnapshotListener { (snapshot, error) in
+            if let error = error {
+                self.showError(with: error.localizedDescription)
+            } else if let documents = snapshot?.documents {
+                self.tweets = documents.compactMap { (document) -> Tweet? in
+                    var tweet = try? document.data(as: Tweet.self)
+                    tweet?.id = document.documentID
+                    return tweet
+                }
+            }
+        }
     }
     
     @IBAction func addButtonDidPress() {
