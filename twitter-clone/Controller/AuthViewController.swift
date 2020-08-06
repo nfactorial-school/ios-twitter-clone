@@ -17,7 +17,7 @@ class AuthViewController: UIViewController {
     }
     
     @IBOutlet weak var authActionSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var authActionButton: UIButton!
+    @IBOutlet weak var authActionButton: LoadingButton!
     @IBOutlet weak var textFieldsStackView: UIStackView!
     @IBOutlet weak var usernameTextField: BaseTextField!
     @IBOutlet weak var emailTextField: BaseTextField!
@@ -87,8 +87,10 @@ class AuthViewController: UIViewController {
             showError(with: "Fields should not be empty!")
             return
         }
+        authActionButton.showLoading()
         Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
             if let error = error {
+                self.authActionButton.hideLoading()
                 self.showError(with: error.localizedDescription)
             } else {
                 self.performSegue(withIdentifier: "showTweets", sender: nil)
@@ -104,14 +106,17 @@ class AuthViewController: UIViewController {
             showError(with: "Fields should not be empty!")
             return
         }
+        authActionButton.showLoading()
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             if let error = error {
+                self.authActionButton.hideLoading()
                 self.showError(with: error.localizedDescription)
             } else if let user = authResult?.user {
                 let updateRequest = user.createProfileChangeRequest()
                 updateRequest.displayName = username
                 updateRequest.commitChanges { (error) in
                     if let error = error {
+                        self.authActionButton.hideLoading()
                         self.showError(with: error.localizedDescription)
                     } else {
                         self.performSegue(withIdentifier: "showTweets", sender: nil)
@@ -119,58 +124,5 @@ class AuthViewController: UIViewController {
                 }
             }
         }
-    }
-}
-
-extension UIViewController {
-    func showError(with message: String) {
-        let alert = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        alert.addAction(ok)
-        present(alert, animated: true, completion: nil)
-    }
-}
-
-class LoadingButton: UIButton {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
-    
-    func setup() {
-        let loader = UIActivityIndicatorView()
-        loader.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(loader)
-        loader.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        loader.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-    }
-}
-    
-    
-class BaseTextField: UITextField {
-    override var placeholder: String? {
-        didSet {
-            attributedPlaceholder = NSAttributedString(string: placeholder ?? "",
-                                                       attributes: [.foregroundColor: UIColor.grayish])
-        }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
-    }
-    
-    func setup() {
-        textColor = .white
     }
 }
