@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		25B74D1924DB1C95003F91BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74D1824DB1C95003F91BD /* AppDelegate.swift */; };
-		25B74D1B24DB1C95003F91BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74D1A24DB1C95003F91BD /* SceneDelegate.swift */; };
 		25B74D1D24DB1C95003F91BD /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74D1C24DB1C95003F91BD /* AuthViewController.swift */; };
 		25B74D2024DB1C95003F91BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25B74D1E24DB1C95003F91BD /* Main.storyboard */; };
 		25B74D2224DB1C99003F91BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25B74D2124DB1C99003F91BD /* Assets.xcassets */; };
@@ -30,7 +29,6 @@
 		0C9B2B0C816B659405DD50AA /* Pods_twitter_clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_twitter_clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B74D1524DB1C95003F91BD /* twitter-clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "twitter-clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B74D1824DB1C95003F91BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		25B74D1A24DB1C95003F91BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		25B74D1C24DB1C95003F91BD /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		25B74D1F24DB1C95003F91BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25B74D2124DB1C99003F91BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 				25B74DB724DBFB9C003F91BD /* GoogleService-Info.plist */,
 				25B74D2624DB1C99003F91BD /* Info.plist */,
 				25B74D1824DB1C95003F91BD /* AppDelegate.swift */,
-				25B74D1A24DB1C95003F91BD /* SceneDelegate.swift */,
 				25B74D2124DB1C99003F91BD /* Assets.xcassets */,
 				25B74D2324DB1C99003F91BD /* LaunchScreen.storyboard */,
 			);
@@ -286,7 +283,6 @@
 				25B74E5524DC9E94003F91BD /* BaseTextField.swift in Sources */,
 				25B74E5324DC9E7A003F91BD /* LoadingButton.swift in Sources */,
 				25B74E4824DC9770003F91BD /* Tweet.swift in Sources */,
-				25B74D1B24DB1C95003F91BD /* SceneDelegate.swift in Sources */,
 				25B74E5024DC9E4D003F91BD /* UIViewController+showError.swift in Sources */,
 				25B74E4524DBFE94003F91BD /* ColorPalette.swift in Sources */,
 			);

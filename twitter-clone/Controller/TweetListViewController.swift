@@ -11,8 +11,10 @@ import Firebase
 import UIKit
 
 class TweetListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    private var listener: ListenerRegistration?
     private var tweets: [Tweet] = [] {
         didSet {
             tableView.reloadData()
@@ -39,10 +41,11 @@ class TweetListViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        usernameLabel.text = "Currently logged in as @\(Auth.auth().currentUser!.displayName!)"
     }
     
     func setupDatabaseListener() {
-        db.collection("tweets").addSnapshotListener { (snapshot, error) in
+        listener = db.collection("tweets").order(by: "timestamp", descending: true).addSnapshotListener { (snapshot, error) in
             if let error = error {
                 self.showError(with: error.localizedDescription)
             } else if let documents = snapshot?.documents {
@@ -57,6 +60,16 @@ class TweetListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func addButtonDidPress() {
         performSegue(withIdentifier: "showTweet", sender: TweetViewController.Action.add)
+    }
+    
+    @IBAction func logoutButtonDidPresss() {
+        do {
+            try Auth.auth().signOut()
+            listener?.remove()
+            navigationController?.popViewController(animated: true)
+        } catch {
+            showError(with: error.localizedDescription)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

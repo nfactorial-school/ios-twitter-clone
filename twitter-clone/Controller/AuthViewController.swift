@@ -89,8 +89,8 @@ class AuthViewController: UIViewController {
         }
         authActionButton.showLoading()
         Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+            self.authActionButton.hideLoading()
             if let error = error {
-                self.authActionButton.hideLoading()
                 self.showError(with: error.localizedDescription)
             } else {
                 self.performSegue(withIdentifier: "showTweets", sender: nil)
@@ -115,8 +115,8 @@ class AuthViewController: UIViewController {
                 let updateRequest = user.createProfileChangeRequest()
                 updateRequest.displayName = username
                 updateRequest.commitChanges { (error) in
+                    self.authActionButton.hideLoading()
                     if let error = error {
-                        self.authActionButton.hideLoading()
                         self.showError(with: error.localizedDescription)
                     } else {
                         self.performSegue(withIdentifier: "showTweets", sender: nil)
