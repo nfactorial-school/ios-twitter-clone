@@ -18,6 +18,8 @@
 		25B74DB824DBFB9C003F91BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25B74DB724DBFB9C003F91BD /* GoogleService-Info.plist */; };
 		25B74E4524DBFE94003F91BD /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74E4324DBFE94003F91BD /* ColorPalette.swift */; };
 		25B74E4624DBFE94003F91BD /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74E4424DBFE94003F91BD /* UIColor+hex.swift */; };
+		25B74E4824DC9770003F91BD /* TweetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74E4724DC9770003F91BD /* TweetModel.swift */; };
+		25B74E4A24DC9788003F91BD /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74E4924DC9788003F91BD /* TweetTableViewCell.swift */; };
 		9E8F015E5160A644D09646C6 /* Pods_twitter_clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C9B2B0C816B659405DD50AA /* Pods_twitter_clone.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +38,8 @@
 		25B74DB724DBFB9C003F91BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		25B74E4324DBFE94003F91BD /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		25B74E4424DBFE94003F91BD /* UIColor+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
+		25B74E4724DC9770003F91BD /* TweetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetModel.swift; sourceTree = "<group>"; };
+		25B74E4924DC9788003F91BD /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		2FF1B6EE4619639829E42F2A /* Pods-twitter-clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter-clone.debug.xcconfig"; path = "Target Support Files/Pods-twitter-clone/Pods-twitter-clone.debug.xcconfig"; sourceTree = "<group>"; };
 		F194D35CEAA88FD7ED0849D7 /* Pods-twitter-clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-twitter-clone.release.xcconfig"; path = "Target Support Files/Pods-twitter-clone/Pods-twitter-clone.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,11 +77,13 @@
 		25B74D1724DB1C95003F91BD /* twitter-clone */ = {
 			isa = PBXGroup;
 			children = (
-				25B74E4324DBFE94003F91BD /* ColorPalette.swift */,
-				25B74E4424DBFE94003F91BD /* UIColor+hex.swift */,
 				25B74D1C24DB1C95003F91BD /* AuthViewController.swift */,
+				25B74E4324DBFE94003F91BD /* ColorPalette.swift */,
 				25B74D2C24DB2687003F91BD /* TweetListViewController.swift */,
+				25B74E4724DC9770003F91BD /* TweetModel.swift */,
+				25B74E4924DC9788003F91BD /* TweetTableViewCell.swift */,
 				25B74D2E24DB2698003F91BD /* TweetViewController.swift */,
+				25B74E4424DBFE94003F91BD /* UIColor+hex.swift */,
 				25B74D1E24DB1C95003F91BD /* Main.storyboard */,
 				25B74D3024DB269E003F91BD /* Supporting Files */,
 			);
@@ -232,9 +238,11 @@
 			files = (
 				25B74E4624DBFE94003F91BD /* UIColor+hex.swift in Sources */,
 				25B74D2D24DB2687003F91BD /* TweetListViewController.swift in Sources */,
+				25B74E4A24DC9788003F91BD /* TweetTableViewCell.swift in Sources */,
 				25B74D1D24DB1C95003F91BD /* AuthViewController.swift in Sources */,
 				25B74D2F24DB2698003F91BD /* TweetViewController.swift in Sources */,
 				25B74D1924DB1C95003F91BD /* AppDelegate.swift in Sources */,
+				25B74E4824DC9770003F91BD /* TweetModel.swift in Sources */,
 				25B74D1B24DB1C95003F91BD /* SceneDelegate.swift in Sources */,
 				25B74E4524DBFE94003F91BD /* ColorPalette.swift in Sources */,
 			);

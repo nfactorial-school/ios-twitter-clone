@@ -16,9 +16,7 @@ class TweetViewController: UIViewController {
         case edit(tweet: TweetModel)
     }
 
-    @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var textView: UITextView!
     
     var action: Action = .add
     
@@ -27,18 +25,33 @@ class TweetViewController: UIViewController {
         setupUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textView.becomeFirstResponder()
+    }
+    
     func setupUI() {
         switch action {
         case .add:
-            titleTextField.text = ""
-            contentTextView.text = ""
+            title = "Add tweet"
+            textView.text = ""
+            let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(actionButtonDidPress(_:)))
+            doneButton.tintColor = .white
+            navigationItem.rightBarButtonItem = doneButton
         case .edit(let tweet):
-            titleTextField.text = tweet.title
-            contentTextView.text = tweet.content
+            title = "Edit tweet"
+            textView.text = tweet.text
+            let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: #selector(actionButtonDidPress(_:)))
+            saveButton.tintColor = .white
+            navigationItem.rightBarButtonItem = saveButton
         }
     }
     
-    @IBAction func actionButtonDidPress(_ sender: UIButton) {
+    @IBAction func cancelButtonDidPress(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func actionButtonDidPress(_ sender: UIButton) {
         switch action {
         case .add:
             performAddAction()
@@ -47,18 +60,13 @@ class TweetViewController: UIViewController {
         }
     }
 
-    @IBAction func cancelButtonDidPress(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     func performAddAction() {
-        guard let title = titleTextField.text, let content = contentTextView.text else {
-            showError(with: "Fields should not be empty!")
+        guard let text = textView.text, !text.isEmpty else {
+            showError(with: "Content should not be empty!")
             return
         }
-        let tweet = TweetModel(title: title, content: content)
         do {
-            let _ = try db.collection("tweets").addDocument(from: tweet)
+            let _ = try db.collection("tweets").addDocument(from: TweetModel(text: text))
             dismiss(animated: true, completion: nil)
         } catch {
             showError(with: error.localizedDescription)
@@ -71,14 +79,16 @@ class TweetViewController: UIViewController {
             dismiss(animated: true, completion: nil)
             return
         }
-        let title = titleTextField.text ?? ""
-        let content = contentTextView.text ?? ""
-        let updatedTweet = TweetModel(title: title, content: content, likeCount: tweet.likeCount)
-        do {
-            try db.collection("tweets").document(tweetId).setData(from: updatedTweet)
-            dismiss(animated: true, completion: nil)
-        } catch {
-            showError(with: error.localizedDescription)
+        guard let text = textView.text, !text.isEmpty else {
+            showError(with: "Content should not be empty!")
+            return
+        }
+        db.collection("tweets").document(tweetId).updateData(["text": text]) { (error) in
+            if let error = error {
+                self.showError(with: error.localizedDescription)
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }
