@@ -17,7 +17,6 @@
 		25B74DB824DBFB9C003F91BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25B74DB724DBFB9C003F91BD /* GoogleService-Info.plist */; };
 		25B74E4524DBFE94003F91BD /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74E4324DBFE94003F91BD /* ColorPalette.swift */; };
 		25B74E4624DBFE94003F91BD /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74E4424DBFE94003F91BD /* UIColor+hex.swift */; };
-		25B74E4824DC9770003F91BD /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74E4724DC9770003F91BD /* Tweet.swift */; };
 		25B74E4A24DC9788003F91BD /* TweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74E4924DC9788003F91BD /* TweetTableViewCell.swift */; };
 		25B74E5024DC9E4D003F91BD /* UIViewController+showError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74E4F24DC9E4D003F91BD /* UIViewController+showError.swift */; };
 		25B74E5324DC9E7A003F91BD /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B74E5224DC9E7A003F91BD /* LoadingButton.swift */; };
@@ -39,7 +38,6 @@
 		25B74DB724DBFB9C003F91BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		25B74E4324DBFE94003F91BD /* ColorPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		25B74E4424DBFE94003F91BD /* UIColor+hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
-		25B74E4724DC9770003F91BD /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		25B74E4924DC9788003F91BD /* TweetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetTableViewCell.swift; sourceTree = "<group>"; };
 		25B74E4F24DC9E4D003F91BD /* UIViewController+showError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+showError.swift"; sourceTree = "<group>"; };
 		25B74E5224DC9E7A003F91BD /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 		25B74E4D24DC9E05003F91BD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				25B74E4724DC9770003F91BD /* Tweet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -282,7 +279,6 @@
 				25B74D1924DB1C95003F91BD /* AppDelegate.swift in Sources */,
 				25B74E5524DC9E94003F91BD /* BaseTextField.swift in Sources */,
 				25B74E5324DC9E7A003F91BD /* LoadingButton.swift in Sources */,
-				25B74E4824DC9770003F91BD /* Tweet.swift in Sources */,
 				25B74E5024DC9E4D003F91BD /* UIViewController+showError.swift in Sources */,
 				25B74E4524DBFE94003F91BD /* ColorPalette.swift in Sources */,
 			);

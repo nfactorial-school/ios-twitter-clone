@@ -27,11 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
         let authViewController = storyboard.instantiateViewController(identifier: "AuthViewController") as! AuthViewController
         let tweetListViewController = storyboard.instantiateViewController(identifier: "TweetListViewController") as! TweetListViewController
-        if Auth.auth().currentUser == nil {
-            navigationController.setViewControllers([authViewController], animated: false)
-        } else {
-            navigationController.setViewControllers([authViewController, tweetListViewController], animated: false)
-        }
+        navigationController.setViewControllers([authViewController], animated: false)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

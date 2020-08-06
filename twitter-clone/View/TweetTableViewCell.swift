@@ -13,24 +13,7 @@ class TweetTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
-    
-    private var model: Tweet?
-    
-    func configure(with model: Tweet) {
-        self.model = model
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .full
-        formatter.dateTimeStyle = .named
-        let dateString = formatter.localizedString(for: model.timestamp.dateValue(), relativeTo: Date())
-        titleLabel.text = "@\(model.authorUsername) • \(dateString)"
-        contentLabel.text = model.text
-        likeButton.setTitle("\(model.likeCount) likes", for: .normal)
-    }
-    
+
     @IBAction func likeButtonDidPress() {
-        guard let id = model?.id else { return }
-        db.collection("tweets").document(id).updateData([
-            "like_count": FieldValue.increment(Int64(1))
-        ])
     }
 }

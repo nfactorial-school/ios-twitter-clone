@@ -13,7 +13,7 @@ class TweetViewController: UIViewController {
     
     enum Action {
         case add
-        case edit(tweet: Tweet)
+        case edit
     }
 
     @IBOutlet weak var textView: UITextView!
@@ -38,9 +38,9 @@ class TweetViewController: UIViewController {
             let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(actionButtonDidPress(_:)))
             doneButton.tintColor = .white
             navigationItem.rightBarButtonItem = doneButton
-        case .edit(let tweet):
+        case .edit:
             title = "Edit tweet"
-            textView.text = tweet.text
+            textView.text = ""
             let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: nil, action: #selector(actionButtonDidPress(_:)))
             saveButton.tintColor = .white
             navigationItem.rightBarButtonItem = saveButton
@@ -55,40 +55,16 @@ class TweetViewController: UIViewController {
         switch action {
         case .add:
             performAddAction()
-        case .edit(let tweet):
-            performEditAction(tweet: tweet)
+        case .edit:
+            performEditAction()
         }
     }
 
     func performAddAction() {
-        guard let text = textView.text, !text.isEmpty else {
-            showError(with: "Content should not be empty!")
-            return
-        }
-        do {
-            let _ = try db.collection("tweets").addDocument(from: Tweet(text: text))
-            dismiss(animated: true, completion: nil)
-        } catch {
-            showError(with: error.localizedDescription)
-        }
+        
     }
     
-    func performEditAction(tweet: Tweet) {
-        guard let tweetId = tweet.id else {
-            showError(with: "Corrupted data: tweet needs to have and id!")
-            dismiss(animated: true, completion: nil)
-            return
-        }
-        guard let text = textView.text, !text.isEmpty else {
-            showError(with: "Content should not be empty!")
-            return
-        }
-        db.collection("tweets").document(tweetId).updateData(["text": text]) { (error) in
-            if let error = error {
-                self.showError(with: error.localizedDescription)
-            } else {
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
+    func performEditAction() {
+        
     }
 }
