@@ -6,15 +6,16 @@
 //  Copyright © 2020 Aidar Nugmanoff. All rights reserved.
 //
 
+import Firebase
 import UIKit
+
+let db = Firestore.firestore()
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FirebaseApp.configure()
         return true
     }
 
