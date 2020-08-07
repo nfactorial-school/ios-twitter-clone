@@ -27,6 +27,7 @@ class TweetViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // Makes textView to be "ready" for input & triggers keyboard opening
         textView.becomeFirstResponder()
     }
     
@@ -61,10 +62,8 @@ class TweetViewController: UIViewController {
     }
 
     func performAddAction() {
-        
     }
     
     func performEditAction() {
-        
     }
 }

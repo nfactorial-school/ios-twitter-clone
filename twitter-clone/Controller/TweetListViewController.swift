@@ -24,7 +24,7 @@ class TweetListViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         // Hide separators for empty rows
-//        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView()
     }
         
     @IBAction func addButtonDidPress() {

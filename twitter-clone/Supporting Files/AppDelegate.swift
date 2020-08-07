@@ -9,6 +9,7 @@
 import Firebase
 import UIKit
 
+// It is never adviced to create global variables on the top-level, it is done here only for the sake of simplicity
 let db = Firestore.firestore()
 
 @UIApplicationMain
