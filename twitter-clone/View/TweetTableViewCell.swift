@@ -18,6 +18,7 @@ class TweetTableViewCell: UITableViewCell {
     
     func configure(with model: Tweet) {
         self.model = model
+        // Creating a formatter is a quite costy operation - so it should be in more careful way too; (but it stays here for the sake of simplicity :)
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full
         formatter.dateTimeStyle = .named
@@ -29,6 +30,7 @@ class TweetTableViewCell: UITableViewCell {
     
     @IBAction func likeButtonDidPress() {
         guard let id = model?.id else { return }
+        // This one is absolutely WRONG, and NOT advised! You should NEVER ever make data requests from Views; (but it stays here for the sake of simplicity :)
         db.collection("tweets").document(id).updateData([
             "like_count": FieldValue.increment(Int64(1))
         ])

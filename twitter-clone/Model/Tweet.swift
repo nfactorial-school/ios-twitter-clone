@@ -25,6 +25,7 @@ struct Tweet: Codable {
         case authorId = "author_uid"
     }
     
+    // It is not really suggested nor encouraged to place calls to `Auth` and stuff directly to the plain models - but it stays here for the sake of simplicity :)
     init(text: String) {
         self.text = text
         self.authorUsername = Auth.auth().currentUser!.displayName!

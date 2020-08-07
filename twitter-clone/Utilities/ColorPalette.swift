@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Leverage usage of xccolorassets when possible (iOS 11.0+) - they are less verbose & more convenient
 extension UIColor {
     static let darkBlue = UIColor(hex: "#17202A")!
     static let lightBlue = UIColor(hex: "#4D9FEB")!
