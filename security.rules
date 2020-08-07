@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /tweets/{tweet} {
+    	allow read, create, delete: if request.auth != null;
+      allow update: if request.auth != null && (request.auth.uid == get(/databases/$(database)/documents/tweets/$(tweet)).data.author_uid || request.resource.data.like_count != get(/databases/$(database)/documents/tweets/$(tweet)).data.like_count);
+    }
+  }
+}
+
